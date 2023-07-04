@@ -17,6 +17,8 @@ use crate::errors::*;
 #[derive(Debug)]
 pub struct SpatialRef(gdal_sys::OGRSpatialReferenceH);
 
+unsafe impl Send for SpatialRef {}
+
 impl Drop for SpatialRef {
     fn drop(&mut self) {
         unsafe { gdal_sys::OSRRelease(self.0) };

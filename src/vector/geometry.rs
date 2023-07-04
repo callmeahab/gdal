@@ -361,6 +361,8 @@ pub struct GeometryRef<'a> {
     _lifetime: PhantomData<&'a ()>,
 }
 
+unsafe impl Send for GeometryRef<'_> {}
+
 impl Deref for GeometryRef<'_> {
     type Target = Geometry;
 

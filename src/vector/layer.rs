@@ -103,6 +103,8 @@ pub struct Layer<'a> {
     phantom: PhantomData<&'a Dataset>,
 }
 
+unsafe impl Send for Layer<'_> {}
+
 impl<'a> MajorObject for Layer<'a> {
     unsafe fn gdal_object_ptr(&self) -> GDALMajorObjectH {
         self.c_layer

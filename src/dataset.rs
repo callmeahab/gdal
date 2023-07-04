@@ -268,6 +268,8 @@ pub struct LayerOptions<'a> {
     pub options: Option<&'a [&'a str]>,
 }
 
+unsafe impl Send for LayerOptions<'_> {}
+
 const EMPTY_LAYER_NAME: &str = "";
 
 impl<'a> Default for LayerOptions<'a> {

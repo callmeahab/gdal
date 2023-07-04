@@ -16,6 +16,8 @@ pub struct Defn {
     c_defn: OGRFeatureDefnH,
 }
 
+unsafe impl Send for Defn {}
+
 impl Defn {
     /// Creates a new Defn by wrapping a C pointer
     ///

@@ -20,6 +20,8 @@ pub struct Feature<'a> {
     geometry: Vec<Geometry>,
 }
 
+unsafe impl Send for Feature<'_> {}
+
 impl<'a> Feature<'a> {
     pub fn new(defn: &'a Defn) -> Result<Feature> {
         let c_feature = unsafe { gdal_sys::OGR_F_Create(defn.c_defn()) };
